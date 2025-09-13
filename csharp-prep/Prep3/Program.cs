@@ -5,12 +5,13 @@ class Program
     static void Main(string[] args)
     {
         Random magicGenerator = new Random();
-        int magicNumber = magicGenerator.Next(1, 101);
         bool quit = false;
         int numberGuesses = 0;
         bool restart = false;
         while (!restart)
         {
+            int magicNumber = magicGenerator.Next(1, 101);
+            numberGuesses = 0;
             while (!quit)
             {
                 numberGuesses = numberGuesses + 1;
