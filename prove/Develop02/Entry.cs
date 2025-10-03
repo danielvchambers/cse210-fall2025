@@ -5,7 +5,7 @@ public class Entry
     public string _entry = "";
     public string _location = "";
     public string _dateText = "";
-    public string _prompt = "";
+    public string _prompt;
     public Entry()
     {
         prompts.Add("Who was the most interesting person I interacted with today?");
@@ -42,5 +42,4 @@ public class Entry
         Console.Write("What is your Location? ");
         _location = Console.ReadLine();
     }
-
 }
