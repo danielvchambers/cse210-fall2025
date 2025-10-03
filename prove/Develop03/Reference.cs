@@ -4,7 +4,7 @@ public class Reference
     private string _chapter;
     private string _verse;
 
-    public Reference(string Reference)
+    public Reference(string _sReference)
     {
         ParseReference(_sReference);
     }

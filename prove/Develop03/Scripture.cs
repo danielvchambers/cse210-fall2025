@@ -42,7 +42,7 @@ public class Scripture
         return _words.Count();
     }
 
-    public void HideRandomWords(int numberOFWordsToHide = 3)
+    public void HideRandomWords(int numberOfWordsToHide = 3)
     {
         int hiddenCount = 0;
         List<int> unhiddenIndexes = _words.Select((word, index) => new { word, index })
