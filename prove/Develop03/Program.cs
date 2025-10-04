@@ -1,3 +1,9 @@
+// Exceeding requirements I did 2 things
+// 1. I made the multiple constructors in the Reference class not needed and reduced it to 1
+// by creating a parse reference method that will parce it into the desired output.
+// 2. I made it so that it would not only hide 3 words at random but it would not hide the
+// same word twice insuring that it will hide 3 words each time.
+
 using System;
 
 class Program
