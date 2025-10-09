@@ -12,9 +12,10 @@ public class Breathing : Activities
         DateTime _endTime = _startTime.AddSeconds(_activityRunTime);
         while (DateTime.Now <= _endTime)
         {
-            Console.WriteLine("Breathe in");
+            Console.WriteLine("Breathe in\n");
             base.WaitingAnim();
-            Console.WriteLine("Breathe out");
+            Console.WriteLine("Breathe out\n");
+            base.WaitingAnim();
         }
     }
 }

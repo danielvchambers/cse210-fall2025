@@ -26,7 +26,7 @@ public class Reflection : Activities
         // Activity Instruction
     }
 
-    protected override void WaitingAnim(int duration)
+    protected void WaitingAnim(int duration)
     {
         List<string> animation = new List<string>
         {
@@ -65,10 +65,9 @@ public class Reflection : Activities
         base.DisplayRandIndex(_prompts);
         while (DateTime.Now <= _endTime)
         {
-            Console.Write("Relfect on ");
+            WaitingAnim(5);
             base.DisplayRandIndex(_questions);
             Console.ReadLine();
-            WaitingAnim(5);
         }
     }
 }

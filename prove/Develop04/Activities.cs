@@ -4,7 +4,6 @@ public class Activities
     private string _endMessage = "Well done and have a good rest of your day!!";
     protected string _activityName;
     protected string _activityInstr;
-    private int _increment;
     private Random ran = new Random();
     protected int _activityRunTime;
 
@@ -13,7 +12,7 @@ public class Activities
         _activityRunTime = time;
     }
 
-    protected virtual void WaitingAnim()
+    protected void WaitingAnim()
     {
         List<string> animation = new List<string>
         {
@@ -32,7 +31,7 @@ public class Activities
 
             string s = animation[i];
             Console.Write(s);
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Console.Write("\b \b");
             i++;
             if (i >= animation.Count())
