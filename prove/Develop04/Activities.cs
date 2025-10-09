@@ -10,26 +10,51 @@ public class Activities
 
     public Activities(int time)
     {
-
+        _activityRunTime = time;
     }
 
     protected virtual void WaitingAnim()
     {
+        List<string> animation = new List<string>
+        {
+            "5",
+            "4",
+            "3",
+            "2",
+            "1",
+        };
 
+        DateTime _startTime = DateTime.Now;
+        DateTime _endTime = _startTime.AddSeconds(5);
+        int i = 0;
+        while (DateTime.Now < _endTime)
+        {
+
+            string s = animation[i];
+            Console.Write(s);
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+            i++;
+            if (i >= animation.Count())
+            {
+                i = 0;
+            }
+        }
     }
 
     protected void DisplayRandIndex(List<string> list)
     {
-
+        int randInt = ran.Next(list.Count);
+        Console.WriteLine(list[randInt]);
     }
 
     public void DisplayStartMess()
     {
-
+        Console.WriteLine(_startMessage);
     }
 
     public void DisplayEndMess()
     {
-
+        Console.WriteLine(_endMessage);
     }
 }
