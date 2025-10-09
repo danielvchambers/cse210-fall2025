@@ -14,14 +14,16 @@ public class Listing : Activities
 
     public Listing(int time) : base(time)
     {
-        // ToDo
+        base._activityName = "Listing Activity";
+        base._activityInstr = "This Activity will help you reflect on some of the good things in your life by" +
+                              "having you list good things based off a prompt given at the beginning of the activity";
     }
 
     public void Run()
     {
         base.DisplayRandIndex(_prompts);
-        base.WaitingAnim();
         Console.WriteLine("List as many items as you can hitting enter after each one.");
+        base.WaitingAnim();
         DateTime _startTime = DateTime.Now;
         DateTime _endTime = _startTime.AddSeconds(_activityRunTime);
         while (DateTime.Now <= _endTime)

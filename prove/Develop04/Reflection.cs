@@ -22,8 +22,9 @@ public class Reflection : Activities
 
     public Reflection(int time) : base(time)
     {
-        // ActivityName
-        // Activity Instruction
+        base._activityName = "Reflection Activity";
+        base._activityInstr = "This Activity will help you relfect on moments in your life and how you can find " +
+                              "moments of strength in those momenst that you can use in the future.";
     }
 
     protected void WaitingAnim(int duration)

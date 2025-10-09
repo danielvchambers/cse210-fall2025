@@ -16,15 +16,13 @@ public class Activities
     {
         List<string> animation = new List<string>
         {
-            "5",
-            "4",
             "3",
             "2",
             "1",
         };
 
         DateTime _startTime = DateTime.Now;
-        DateTime _endTime = _startTime.AddSeconds(5);
+        DateTime _endTime = _startTime.AddSeconds(3);
         int i = 0;
         while (DateTime.Now < _endTime)
         {
