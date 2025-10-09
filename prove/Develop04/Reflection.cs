@@ -22,16 +22,53 @@ public class Reflection : Activities
 
     public Reflection(int time) : base(time)
     {
-
+        // ActivityName
+        // Activity Instruction
     }
 
     protected override void WaitingAnim(int duration)
     {
+        List<string> animation = new List<string>
+        {
+            "|",
+            "/",
+            "-",
+            "\\",
+            "|",
+            "/",
+            "-",
+            "\\"
+        };
 
+        DateTime _startTime = DateTime.Now;
+        DateTime _endTime = _startTime.AddSeconds(duration);
+        int i = 0;
+        while (DateTime.Now < _endTime)
+        {
+
+            string s = animation[i];
+            Console.Write(s);
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+            i++;
+            if (i >= animation.Count())
+            {
+                i = 0;
+            }
+        }
     }
 
     public void Run()
     {
-
+        DateTime _startTime = DateTime.Now;
+        DateTime _endTime = _startTime.AddSeconds(_activityRunTime);
+        base.DisplayRandIndex(_prompts);
+        while (DateTime.Now <= _endTime)
+        {
+            Console.Write("Relfect on ");
+            base.DisplayRandIndex(_questions);
+            Console.ReadLine();
+            WaitingAnim(5);
+        }
     }
 }

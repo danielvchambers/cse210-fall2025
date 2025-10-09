@@ -14,11 +14,21 @@ public class Listing : Activities
 
     public Listing(int time) : base(time)
     {
-
+        // ToDo
     }
 
     public void Run()
     {
-
+        base.DisplayRandIndex(_prompts);
+        base.WaitingAnim();
+        Console.WriteLine("List as many items as you can hitting enter after each one.");
+        DateTime _startTime = DateTime.Now;
+        DateTime _endTime = _startTime.AddSeconds(_activityRunTime);
+        while (DateTime.Now <= _endTime)
+        {
+            _response = Console.ReadLine();
+            _responses.Add(_response);
+        }
+        Console.WriteLine(_responses.Count());
     }
 }
