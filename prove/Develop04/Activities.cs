@@ -12,30 +12,13 @@ public class Activities
         _activityRunTime = time;
     }
 
-    protected void WaitingAnim()
+    protected virtual void WaitingAnim(int _increment)
     {
-        List<string> animation = new List<string>
+        for (int i = _increment; i > 0; i--)
         {
-            "3",
-            "2",
-            "1",
-        };
-
-        DateTime _startTime = DateTime.Now;
-        DateTime _endTime = _startTime.AddSeconds(3);
-        int i = 0;
-        while (DateTime.Now < _endTime)
-        {
-
-            string s = animation[i];
-            Console.Write(s);
+            Console.Write(i);
             Thread.Sleep(1000);
             Console.Write("\b \b");
-            i++;
-            if (i >= animation.Count())
-            {
-                i = 0;
-            }
         }
     }
 

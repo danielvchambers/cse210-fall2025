@@ -17,7 +17,7 @@ class Program
         int _time = int.Parse(time);
         if (_choice == 1)
         {
-            Breathing _breathing = new Breathing(_time); // Hard coded duration of 180 seconds ToDo: Implement user input for duration
+            Breathing _breathing = new Breathing(_time);
             _breathing.Run();
         }
         else if (_choice == 2)

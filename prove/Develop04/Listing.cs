@@ -1,5 +1,6 @@
 public class Listing : Activities
 {
+    private int _think;
     private List<string> _prompts = new List<string>
     {
         "Who are people that you appreciate? ",
@@ -21,9 +22,14 @@ public class Listing : Activities
 
     public void Run()
     {
+        Console.Write("How much time do you want to think? ");
+        string think = Console.ReadLine();
+        _think = int.Parse(think);
+        Console.WriteLine(base._activityName);
+        Console.WriteLine(base._activityInstr);
         base.DisplayRandIndex(_prompts);
         Console.WriteLine("List as many items as you can hitting enter after each one.");
-        base.WaitingAnim();
+        base.WaitingAnim(_think);
         DateTime _startTime = DateTime.Now;
         DateTime _endTime = _startTime.AddSeconds(_activityRunTime);
         while (DateTime.Now <= _endTime)

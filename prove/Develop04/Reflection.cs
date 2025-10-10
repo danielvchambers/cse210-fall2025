@@ -27,7 +27,7 @@ public class Reflection : Activities
                               "moments of strength in those momenst that you can use in the future.";
     }
 
-    protected void WaitingAnim(int duration)
+    protected override void WaitingAnim(int duration)
     {
         List<string> animation = new List<string>
         {
@@ -63,12 +63,14 @@ public class Reflection : Activities
     {
         DateTime _startTime = DateTime.Now;
         DateTime _endTime = _startTime.AddSeconds(_activityRunTime);
+        Console.Write("How many seconds do you want to think between questions? ");
+        string think = Console.ReadLine();
+        int _think = int.Parse(think);
         base.DisplayRandIndex(_prompts);
         while (DateTime.Now <= _endTime)
         {
-            WaitingAnim(5);
+            WaitingAnim(_think);
             base.DisplayRandIndex(_questions);
-            Console.ReadLine();
         }
     }
 }
