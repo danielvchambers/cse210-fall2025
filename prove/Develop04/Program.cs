@@ -1,3 +1,5 @@
+// I used Polymorphism to override the WaitingAnim method in activities class and reflection class as my showing creativity
+
 using System;
 
 class Program
@@ -12,23 +14,35 @@ class Program
         string choice = Console.ReadLine();
         int _choice = int.Parse(choice);
         string time;
-        Console.Write($"How long Do you want the activity to last in seconds? ");
-        time = Console.ReadLine();
-        int _time = int.Parse(time);
+        int _time;
+
         if (_choice == 1)
         {
+            Console.Write($"How long Do you want the activity to last in seconds? ");
+            time = Console.ReadLine();
+            _time = int.Parse(time);
             Breathing _breathing = new Breathing(_time);
             _breathing.Run();
         }
         else if (_choice == 2)
         {
+            Console.Write($"How long Do you want the activity to last in seconds? ");
+            time = Console.ReadLine();
+            _time = int.Parse(time);
             Reflection _reflection = new Reflection(_time);
             _reflection.Run();
         }
         else if (_choice == 3)
         {
+            Console.Write($"How long Do you want the activity to last in seconds? ");
+            time = Console.ReadLine();
+            _time = int.Parse(time);
             Listing _listing = new Listing(_time);
             _listing.Run();
+        }
+        else
+        {
+            Console.WriteLine("The End");
         }
     }
 }

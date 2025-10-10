@@ -7,7 +7,11 @@ public class Listing : Activities
         "What are personal strengths of yours? ",
         "Who are people that you have helped this week? ",
         "When have you felt the Holy Ghost this month? ",
-        "Who are some of your personal heroes? "
+        "Who are some of your personal heroes? ",
+        "What were some of your favorite things that happened today? ",
+        "What books have you read this month? ",
+        "What are some of your favorite fall activities? ",
+        "What are your favorite scripture verses? "
     };
 
     private List<string> _responses = new List<string>();
@@ -16,17 +20,17 @@ public class Listing : Activities
     public Listing(int time) : base(time)
     {
         base._activityName = "Listing Activity";
-        base._activityInstr = "This Activity will help you reflect on some of the good things in your life by" +
+        base._activityInstr = "This Activity will help you reflect on some of the good things in your life by " +
                               "having you list good things based off a prompt given at the beginning of the activity";
     }
 
     public void Run()
     {
-        Console.Write("How much time do you want to think? ");
+        Console.WriteLine($"\n{base._activityName}");
+        Console.WriteLine(base._activityInstr);
+        Console.Write($"\nHow much time do you want to think? ");
         string think = Console.ReadLine();
         _think = int.Parse(think);
-        Console.WriteLine(base._activityName);
-        Console.WriteLine(base._activityInstr);
         base.DisplayRandIndex(_prompts);
         Console.WriteLine("List as many items as you can hitting enter after each one.");
         base.WaitingAnim(_think);

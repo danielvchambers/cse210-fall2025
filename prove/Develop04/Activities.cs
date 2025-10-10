@@ -18,7 +18,7 @@ public class Activities
         {
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.Write("\b\b  \b\b");
         }
     }
 
