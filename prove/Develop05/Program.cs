@@ -7,6 +7,9 @@ class Program
         bool end = false;
         int choice;
         List<Goal> goals = new List<Goal>();
+        string goalName;
+        string goalInfo;
+        int points;
         while (!end)
         {
             Console.WriteLine("\nMenu" +
@@ -35,13 +38,43 @@ class Program
                     switch (choice)
                     {
                         case 1:
-                            //fill
+                            Console.WriteLine("What is the name of your goal: ");
+                            goalName = Console.ReadLine();
+                            Console.WriteLine("What is a Short Description of your goal: ");
+                            goalInfo = Console.ReadLine();
+                            Console.WriteLine("How many points is this goal worth: ");
+                            v = Console.ReadLine();
+                            points = int.Parse(v);
+                            SimpleGoal simple = new SimpleGoal(goalName, goalInfo, points);
+                            goals.Add(simple);
                             break;
                         case 2:
-                            //fill
+                            Console.WriteLine("What is the name of your goal: ");
+                            goalName = Console.ReadLine();
+                            Console.WriteLine("What is a Short Description of your goal: ");
+                            goalInfo = Console.ReadLine();
+                            Console.WriteLine("How many points is this goal worth: ");
+                            v = Console.ReadLine();
+                            points = int.Parse(v);
+                            EternalGoal eternal = new EternalGoal(goalName, goalInfo, points);
+                            goals.Add(eternal);
                             break;
                         case 3:
-                            //fill
+                            Console.WriteLine("What is the name of your goal: ");
+                            goalName = Console.ReadLine();
+                            Console.WriteLine("What is a Short Description of your goal: ");
+                            goalInfo = Console.ReadLine();
+                            Console.WriteLine("How many times do you want to complete this goal: ");
+                            v = Console.ReadLine();
+                            int totalEvents = int.Parse(v);
+                            Console.WriteLine("How many points is this goal worth each time it is completed: ");
+                            v = Console.ReadLine();
+                            int pointsPerComplete = int.Parse(v);
+                            Console.WriteLine($"How many points do you get when your complete this goal all {totalEvents}: ");
+                            v = Console.ReadLine();
+                            points = int.Parse(v);
+                            ChecklistGoal checklist = new ChecklistGoal(goalName, goalInfo, points, totalEvents, pointsPerComplete);
+                            goals.Add(checklist);
                             break;
                     }
                     break;
@@ -52,13 +85,13 @@ class Program
                     }
                     break;
                 case 3:
-                    //fill
+                    //Save goals
                     break;
                 case 4:
-                    //fill
+                    //Load goals
                     break;
                 case 5:
-                    //fill
+                    //Record Event
                     break;
                 case 6:
                     end = true;
