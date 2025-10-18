@@ -16,7 +16,7 @@ public class ChecklistGoal : Goal
         {
             case true:
                 Console.WriteLine($"[X] {_goalName}: {_goalInfo}, " +
-                    $"Points: {_pointsPerComplete} Bonus Points: {_goalPoints} " +
+                    $"Points: {_pointsPerComplete}, Bonus Points: {_goalPoints}, " +
                     $"Completed: {_eventsOccured}/{_totalEvents}"
                 );
                 break;
