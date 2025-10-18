@@ -8,6 +8,7 @@ public class ChecklistGoal : Goal
     {
         _totalEvents = totalEvents;
         _pointsPerComplete = pointsPerComplete;
+        _goalType = "Checklist";
     }
 
     public override void Display()

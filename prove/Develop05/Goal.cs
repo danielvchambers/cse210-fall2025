@@ -3,7 +3,7 @@ public class Goal
     private string _fileName;
     protected string _goalName;
     protected string _goalInfo;
-    private string _goalType;
+    protected string _goalType;
     protected int _goalPoints;
     private int _totalPoints;
     protected bool _complete = false;
@@ -47,5 +47,15 @@ public class Goal
     public int GetPoints()
     {
         return _totalPoints;
+    }
+
+    public int GetGoalPoints()
+    {
+        return _goalPoints;
+    }
+
+    public string GetGoalType()
+    {
+        return _goalType;
     }
 }
