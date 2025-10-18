@@ -1,10 +1,10 @@
 public class Goal
 {
     private string _fileName;
-    private string _goalName;
-    private string _goalInfo;
+    protected string _goalName;
+    protected string _goalInfo;
     private string _goalType;
-    private int _goalPoints;
+    protected int _goalPoints;
     private int _totalPoints;
     protected bool _complete = false;
 
@@ -34,13 +34,18 @@ public class Goal
         }
     }
 
-    public virtual void LoadFile()
+    public virtual void Load(string fileName)
     {
         //Load Method
     }
 
-    public void AddPoints(int totalPoints, int goalPoints)
+    protected void AddPoints(int totalPoints, int goalPoints)
     {
         _totalPoints = totalPoints + goalPoints;
+    }
+
+    public int GetPoints()
+    {
+        return _totalPoints;
     }
 }
