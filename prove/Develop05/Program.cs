@@ -12,13 +12,14 @@ class Program
         int points;
         while (!end)
         {
-            Console.WriteLine("\nMenu" +
+            Console.Write("\nMenu" +
                 "\n1. Create new goal" +
                 "\n2. Display goals" +
                 "\n3. Save goals" +
                 "\n4. Load goals" +
                 "\n5. Record Event" +
                 "\n6. Quit" +
+                "\n7. test program" +
                 "\nSelect a number from the menu: "
             );
 
@@ -27,7 +28,7 @@ class Program
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("\nWhat kind of goal would you like to create?" +
+                    Console.Write("\nWhat kind of goal would you like to create?" +
                         "\n1. Simple Goal" +
                         "\n2. Eternal Goal" +
                         "\n3. Checklist Goal" +
@@ -45,7 +46,7 @@ class Program
                             Console.WriteLine("How many points is this goal worth: ");
                             v = Console.ReadLine();
                             points = int.Parse(v);
-                            SimpleGoal simple = new SimpleGoal(goalName, goalInfo, points);
+                            Goal simple = new Goal(goalName, goalInfo, points);
                             goals.Add(simple);
                             break;
                         case 2:
@@ -85,7 +86,10 @@ class Program
                     }
                     break;
                 case 3:
-                    //Save goals
+                    foreach (Goal goal in goals)
+                    {
+                        goal.Save();
+                    }
                     break;
                 case 4:
                     //Load goals
@@ -95,6 +99,9 @@ class Program
                     break;
                 case 6:
                     end = true;
+                    break;
+                case 7:
+                    Tests.RunAllTest();
                     break;
             }
 

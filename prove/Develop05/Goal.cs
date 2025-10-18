@@ -1,11 +1,17 @@
+using System.Text.Json.Serialization;
+using System.Text.Json;
 public class Goal
 {
     private string _fileName;
+    [JsonInclude]
     protected string _goalName;
+    [JsonInclude]
     protected string _goalInfo;
-    protected string _goalType;
+    [JsonInclude]
     protected int _goalPoints;
+    [JsonInclude]
     private int _totalPoints;
+    [JsonInclude]
     protected bool _complete = false;
 
     public Goal(string name, string info, int points)
@@ -16,9 +22,10 @@ public class Goal
         _complete = false;
     }
 
-    public virtual void Save(Goal goal)
+    public virtual void Save()
     {
-        //save method
+        string jsonString = JsonSerializer.Serialize(this);
+        Console.WriteLine(jsonString);
     }
 
     public virtual void Display()
@@ -54,8 +61,8 @@ public class Goal
         return _goalPoints;
     }
 
-    public string GetGoalType()
+    public void SetComplete()
     {
-        return _goalType;
+        _complete = true;
     }
 }

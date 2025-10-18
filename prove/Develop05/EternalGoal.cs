@@ -4,6 +4,5 @@ public class EternalGoal : Goal
     {
         // Just to make sure this is always comes out as incomplete
         _complete = false;
-        _goalType = "Eternal";
     }
 }
