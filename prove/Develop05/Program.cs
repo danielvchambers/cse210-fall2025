@@ -18,7 +18,8 @@ class Program
         string fileName;
         while (!end)
         {
-            Console.Write("\nMenu" +
+            Console.Write($"\nYour Points: {totalPoints}\n\n" +
+                "\nMenu" +
                 "\n1. Create new goal" +
                 "\n2. Display goals" +
                 "\n3. Save goals" +
@@ -45,39 +46,39 @@ class Program
                     switch (choice)
                     {
                         case 1:
-                            Console.WriteLine("What is the name of your goal: ");
+                            Console.Write("What is the name of your goal: ");
                             goalName = Console.ReadLine();
-                            Console.WriteLine("What is a Short Description of your goal: ");
+                            Console.Write("What is a Short Description of your goal: ");
                             goalInfo = Console.ReadLine();
-                            Console.WriteLine("How many points is this goal worth: ");
+                            Console.Write("How many points is this goal worth: ");
                             v = Console.ReadLine();
                             points = int.Parse(v);
                             Goal simple = new Goal(goalName, goalInfo, points);
                             goals.Add(simple);
                             break;
                         case 2:
-                            Console.WriteLine("What is the name of your goal: ");
+                            Console.Write("What is the name of your goal: ");
                             goalName = Console.ReadLine();
-                            Console.WriteLine("What is a Short Description of your goal: ");
+                            Console.Write("What is a Short Description of your goal: ");
                             goalInfo = Console.ReadLine();
-                            Console.WriteLine("How many points is this goal worth: ");
+                            Console.Write("How many points is this goal worth: ");
                             v = Console.ReadLine();
                             points = int.Parse(v);
                             EternalGoal eternal = new EternalGoal(goalName, goalInfo, points);
                             goals.Add(eternal);
                             break;
                         case 3:
-                            Console.WriteLine("What is the name of your goal: ");
+                            Console.Write("What is the name of your goal: ");
                             goalName = Console.ReadLine();
-                            Console.WriteLine("What is a Short Description of your goal: ");
+                            Console.Write("What is a Short Description of your goal: ");
                             goalInfo = Console.ReadLine();
-                            Console.WriteLine("How many times do you want to complete this goal: ");
+                            Console.Write("How many times do you want to complete this goal: ");
                             v = Console.ReadLine();
                             int totalEvents = int.Parse(v);
-                            Console.WriteLine("How many points is this goal worth each time it is completed: ");
+                            Console.Write("How many points is this goal worth each time it is completed: ");
                             v = Console.ReadLine();
                             int pointsPerComplete = int.Parse(v);
-                            Console.WriteLine($"How many points do you get when your complete this goal all {totalEvents}: ");
+                            Console.Write($"How many points do you get when your complete this goal all {totalEvents}: ");
                             v = Console.ReadLine();
                             points = int.Parse(v);
                             ChecklistGoal checklist = new ChecklistGoal(goalName, goalInfo, points, totalEvents, pointsPerComplete);
@@ -93,13 +94,13 @@ class Program
                     break;
                 case 3:
                     Console.Write("What is the name of the file you want to save to: ");
-                    fileName = Console.ReadLine();
+                    fileName = $"{Console.ReadLine()}.json";
                     QuestFileFormat.SaveToJson(fileName, totalPoints, goals);
                     break;
                 case 4:
                     Console.Write("What is the name of the file you want to load from: ");
                     fileName = Console.ReadLine();
-                    Tuple<int, List<Goal>> data = QuestFileFormat.LoadFromJson(fileName);
+                    Tuple<int, List<Goal>> data = QuestFileFormat.LoadFromJson($"{fileName}.json");
                     totalPoints = data.Item1;
                     goals = data.Item2;
                     break;
@@ -120,6 +121,9 @@ class Program
                         Console.Write("Which goal do you want to record an event for? ");
                         string r = Console.ReadLine();
                         choice = int.Parse(r);
+                        choice = choice - 1;
+                        totalPoints = goals[choice].AddPoints(totalPoints, goals[choice].GetPoints());
+                        goals[choice].SetComplete();
                     }
                     break;
                 case 6:

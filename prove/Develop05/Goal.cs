@@ -35,8 +35,7 @@ public class Goal
         }
     }
 
-
-    protected virtual int AddPoints(int totalPoints, int goalPoints)
+    public virtual int AddPoints(int totalPoints, int goalPoints)
     {
         return totalPoints + goalPoints;
     }
@@ -44,5 +43,10 @@ public class Goal
     public virtual void SetComplete()
     {
         _complete = true;
+    }
+
+    public int GetPoints()
+    {
+        return _goalPoints;
     }
 }

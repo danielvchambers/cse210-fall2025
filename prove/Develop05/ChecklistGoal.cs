@@ -36,5 +36,33 @@ public class ChecklistGoal : Goal
         }
     }
 
+    public override int AddPoints(int totalPoints, int goalPoints)
+    {
+        if (_eventsOccured == _totalEvents)
+        {
+            totalPoints = totalPoints + _pointsPerComplete + goalPoints;
+        }
+
+        else
+        {
+            totalPoints = totalPoints + _pointsPerComplete;
+            _eventsOccured = _eventsOccured + 1;
+            return totalPoints;
+        }
+
+
+        return totalPoints;
+    }
+    public override void SetComplete()
+    {
+        if (_eventsOccured == _totalEvents)
+        {
+            _complete = true;
+        }
+        else
+        {
+            _complete = false;
+        }
+    }
 
 }
