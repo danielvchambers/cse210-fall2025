@@ -5,4 +5,9 @@ public class EternalGoal : Goal
         // Just to make sure this is always comes out as incomplete
         _complete = false;
     }
+
+    public override void SetComplete()
+    {
+        _complete = false;
+    }
 }

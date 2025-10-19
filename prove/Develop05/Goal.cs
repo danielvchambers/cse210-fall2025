@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.IO;
 public class Goal
 {
     private string _fileName;
@@ -14,6 +15,9 @@ public class Goal
     [JsonInclude]
     protected bool _complete = false;
 
+    public Goal()
+    { }
+
     public Goal(string name, string info, int points)
     {
         _goalName = name;
@@ -22,10 +26,15 @@ public class Goal
         _complete = false;
     }
 
-    public virtual void Save()
+    public void Save()
     {
+        Console.Write("What is the name of the file you want to save to: ");
+        _fileName = Console.ReadLine();
         string jsonString = JsonSerializer.Serialize(this);
-        Console.WriteLine(jsonString);
+        using (StreamWriter file = new StreamWriter($"{_fileName}.json"))
+        {
+            file.WriteLine(jsonString);
+        }
     }
 
     public virtual void Display()
@@ -43,7 +52,13 @@ public class Goal
 
     public virtual void Load(string fileName)
     {
-        //Load Method
+        Console.Write("What is the name of the file you want to load from: ");
+        _fileName = Console.ReadLine();
+        string[] file = System.IO.File.ReadAllLines(_fileName);
+        foreach (line in file)
+        {
+            Goal _goal = JsonSerializer.Deserialize<Goal>();
+        }
     }
 
     protected void AddPoints(int totalPoints, int goalPoints)
@@ -51,17 +66,17 @@ public class Goal
         _totalPoints = totalPoints + goalPoints;
     }
 
-    public int GetPoints()
-    {
-        return _totalPoints;
-    }
+    //public int GetPoints()
+    //{
+    //    return _totalPoints;
+    //}
+    //
+    //public int GetGoalPoints()
+    //{
+    //    return _goalPoints;
+    //}
 
-    public int GetGoalPoints()
-    {
-        return _goalPoints;
-    }
-
-    public void SetComplete()
+    public virtual void SetComplete()
     {
         _complete = true;
     }
