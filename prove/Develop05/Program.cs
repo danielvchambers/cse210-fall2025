@@ -1,3 +1,16 @@
+// I used the base class as the simple goals as it was the base function
+// Then I set up the load and save functions in a separate Json Class
+// to save to a .json file and load from a .json file
+// This is something we haven't been taught so here are some of my source files
+// https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview
+// https://learn.microsoft.com/en-us/dotnet/api/system.text.json?view=net-9.0
+// https://stackoverflow.com/questions/4980500/literal-notation-for-dictionary-in-c
+// https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsonserializer?view=net-9.0
+// https://learn.microsoft.com/en-us/dotnet/api/system.text.json.jsonserializer.serialize?view=net-9.0#system-text-json-jsonserializer-serialize(system-object-system-text-json-serialization-metadata-jsontypeinfo)
+// I did a lot of research and trial and error I learned a lot and Realized by the end of this
+// that I could have done something a lot simpler but in the end I am glad i did this because
+// I learned a lot in how csharp works as a language.
+
 using System;
 using System.Text.Json.Serialization;
 using System.Text.Json;
