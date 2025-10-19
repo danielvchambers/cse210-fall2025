@@ -1,4 +1,8 @@
 using System;
+using System.Text.Json.Serialization;
+using System.Text.Json;
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
@@ -10,6 +14,8 @@ class Program
         string goalName;
         string goalInfo;
         int points;
+        int totalPoints = 0;
+        string fileName;
         while (!end)
         {
             Console.Write("\nMenu" +
@@ -82,20 +88,39 @@ class Program
                 case 2:
                     foreach (Goal goal in goals)
                     {
-                        goal.Display();
+                        Console.WriteLine(goal.Display());
                     }
                     break;
                 case 3:
-                    foreach (Goal goal in goals)
-                    {
-                        goal.Save();
-                    }
+                    Console.Write("What is the name of the file you want to save to: ");
+                    fileName = Console.ReadLine();
+                    QuestFileFormat.SaveToJson(fileName, totalPoints, goals);
                     break;
                 case 4:
-                    //Load goals
+                    Console.Write("What is the name of the file you want to load from: ");
+                    fileName = Console.ReadLine();
+                    Tuple<int, List<Goal>> data = QuestFileFormat.LoadFromJson(fileName);
+                    totalPoints = data.Item1;
+                    goals = data.Item2;
                     break;
                 case 5:
-                    //Record Event
+                    if (goals.Count == 0)
+                    {
+                        Console.WriteLine("You have no goals to record.");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Your goals are:");
+                        for (int i = 0; i < goals.Count(); i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {goals[i].Display()}");
+                        }
+
+                        Console.Write("Which goal do you want to record an event for? ");
+                        string r = Console.ReadLine();
+                        choice = int.Parse(r);
+                    }
                     break;
                 case 6:
                     end = true;
@@ -103,8 +128,8 @@ class Program
                 case 7:
                     Tests.RunAllTest();
                     break;
-            }
 
+            }
         }
     }
 }

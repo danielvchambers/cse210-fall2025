@@ -1,17 +1,14 @@
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using System.IO;
+
 public class Goal
 {
-    private string _fileName;
     [JsonInclude]
     protected string _goalName;
     [JsonInclude]
     protected string _goalInfo;
     [JsonInclude]
     protected int _goalPoints;
-    [JsonInclude]
-    private int _totalPoints;
     [JsonInclude]
     protected bool _complete = false;
 
@@ -26,55 +23,23 @@ public class Goal
         _complete = false;
     }
 
-    public void Save()
-    {
-        Console.Write("What is the name of the file you want to save to: ");
-        _fileName = Console.ReadLine();
-        string jsonString = JsonSerializer.Serialize(this);
-        using (StreamWriter file = new StreamWriter($"{_fileName}.json"))
-        {
-            file.WriteLine(jsonString);
-        }
-    }
-
-    public virtual void Display()
+    public virtual string Display()
     {
         switch (_complete)
         {
             case true:
-                Console.WriteLine($"[X] {_goalName}: {_goalInfo}, Value: {_goalPoints}");
-                break;
+                return ($"[X] {_goalName}: {_goalInfo}, Value: {_goalPoints}");
+
             default:
-                Console.WriteLine($"[ ] {_goalName}: {_goalInfo}, Value: {_goalPoints}");
-                break;
+                return ($"[ ] {_goalName}: {_goalInfo}, Value: {_goalPoints}");
         }
     }
 
-    public virtual void Load(string fileName)
-    {
-        Console.Write("What is the name of the file you want to load from: ");
-        _fileName = Console.ReadLine();
-        string[] file = System.IO.File.ReadAllLines(_fileName);
-        foreach (line in file)
-        {
-            Goal _goal = JsonSerializer.Deserialize<Goal>();
-        }
-    }
 
-    protected void AddPoints(int totalPoints, int goalPoints)
+    protected virtual int AddPoints(int totalPoints, int goalPoints)
     {
-        _totalPoints = totalPoints + goalPoints;
+        return totalPoints + goalPoints;
     }
-
-    //public int GetPoints()
-    //{
-    //    return _totalPoints;
-    //}
-    //
-    //public int GetGoalPoints()
-    //{
-    //    return _goalPoints;
-    //}
 
     public virtual void SetComplete()
     {

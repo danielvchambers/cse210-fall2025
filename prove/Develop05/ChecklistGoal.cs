@@ -1,8 +1,16 @@
+using System.Text.Json.Serialization;
+using System.Text.Json;
+
 public class ChecklistGoal : Goal
 {
+    [JsonInclude]
     private int _eventsOccured = 0;
+    [JsonInclude]
     private int _totalEvents;
+    [JsonInclude]
     private int _pointsPerComplete;
+
+    public ChecklistGoal() : base() { }
 
     public ChecklistGoal(string name, string info, int points, int totalEvents, int pointsPerComplete) : base(name, info, points)
     {
@@ -10,22 +18,23 @@ public class ChecklistGoal : Goal
         _pointsPerComplete = pointsPerComplete;
     }
 
-    public override void Display()
+    public override string Display()
     {
         switch (_complete)
         {
             case true:
-                Console.WriteLine($"[X] {_goalName}: {_goalInfo}, " +
+                return ($"[X] {_goalName}: {_goalInfo}, " +
                     $"Points: {_pointsPerComplete}, Bonus Points: {_goalPoints}, " +
                     $"Completed: {_eventsOccured}/{_totalEvents}"
                 );
-                break;
+
             default:
-                Console.WriteLine($"[ ] {_goalName}: {_goalInfo}, " +
-                    $"Points: {_pointsPerComplete} Bonus Points: {_goalPoints} " +
+                return ($"[ ] {_goalName}: {_goalInfo}, " +
+                    $"Points: {_pointsPerComplete}, Bonus Points: {_goalPoints}, " +
                     $"Completed: {_eventsOccured}/{_totalEvents}"
                 );
-                break;
         }
     }
+
+
 }

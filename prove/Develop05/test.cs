@@ -6,9 +6,17 @@ public class Tests
     public static void RunAllTest()
     {
         Console.WriteLine("running all tests");
+        _simpleGoal.Display();
+        _eternalGoal.Display();
+        _checklistGoal.Display();
+
         Test_Save_Goal();
         Test_Save_EternalGoal();
         Test_Save_ChecklistGoal();
+
+        Test_Load_Goal();
+        Test_Load_ChecklistGoal();
+        Test_Load_EternalGoal();
     }
 
     public static void Test_Goal_Save()
@@ -18,16 +26,31 @@ public class Tests
 
     public static void Test_Save_Goal()
     {
-        _simpleGoal.Save();
+        // _simpleGoal.Save("test");
     }
 
     public static void Test_Save_EternalGoal()
     {
-        _eternalGoal.Save();
+        //  _eternalGoal.Save("test");
     }
 
     public static void Test_Save_ChecklistGoal()
     {
-        _checklistGoal.Save();
+        // _checklistGoal.Save("test");
+    }
+
+    public static void Test_Load_ChecklistGoal()
+    {
+        //  _checklistGoal.Load("test.json");
+    }
+
+    public static void Test_Load_Goal()
+    {
+        // _simpleGoal.Load("test.json");
+    }
+
+    public static void Test_Load_EternalGoal()
+    {
+        //  _eternalGoal.Load("test.json");
     }
 }
