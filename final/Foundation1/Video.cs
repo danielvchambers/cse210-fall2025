@@ -12,14 +12,26 @@ public class Video
         _length = length;
     }
 
-    public string Display()
+    public void Display()
     {
-        return "";
+        Console.WriteLine($"\n\nTitle: {_title}\nVideo Done By: {_author}\nLength Of The Video: {_length} seconds\nNumber of Comments: {_comments.Count()}");
+
+        foreach (Comment comment in _comments)
+        {
+            string formatComment = comment.Display();
+            Console.WriteLine(formatComment);
+        }
     }
 
     public int NumOfComments()
     {
         int numComments = _comments.Count();
         return numComments;
+    }
+
+    public void AddComment(string author, string comment)
+    {
+        Comment i = new Comment(author, comment);
+        _comments.Add(i);
     }
 }
