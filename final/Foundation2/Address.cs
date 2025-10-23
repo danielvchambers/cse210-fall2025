@@ -18,8 +18,8 @@ public class Address
         return _country;
     }
 
-    public void Display()
+    public string GetAddress()
     {
-        Console.WriteLine($"{_streetAddress}, {_city} {_state}, {_country}");
+        return $"{_streetAddress}\n{_city} {_state}\n{_country}";
     }
 }

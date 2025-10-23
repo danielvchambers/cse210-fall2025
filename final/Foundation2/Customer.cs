@@ -1,7 +1,7 @@
 public class Customer
 {
     private string _name;
-    private Address _address = new Address();
+    private Address _address;
 
     public Customer(string name, Address address)
     {
@@ -9,9 +9,9 @@ public class Customer
         _address = address;
     }
 
-    public bool InUSA(string country)
+    public bool InUSA()
     {
-        switch (country)
+        switch (_address.GetCountry())
         {
             case "USA":
                 return true;
@@ -19,5 +19,15 @@ public class Customer
             default:
                 return false;
         }
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetAddress()
+    {
+        return _address.GetAddress();
     }
 }
