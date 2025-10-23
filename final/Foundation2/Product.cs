@@ -2,10 +2,10 @@ public class Product
 {
     private string _name;
     private int _productID;
-    private float _pricePerUnit;
+    private double _pricePerUnit;
     private int _quantity;
 
-    public Product(string name, int productID, float pricePerUnit, int quantity)
+    public Product(string name, int productID, double pricePerUnit, int quantity)
     {
         _name = name;
         _productID = productID;
@@ -13,16 +13,13 @@ public class Product
         _quantity = quantity;
     }
 
-    public float CalcCost()
+    public double CalcCost()
     {
         return _pricePerUnit * _quantity;
     }
 
     public string GetProduct()
     {
-        return $"\nProduct ID: {_productID}\n" +
-        $"Product: {_name}\n" +
-        $"Price: ${_pricePerUnit}\n" +
-        $"Quantity: {_quantity}";
+        return $"\n{_name}: {_productID}\n";
     }
 }

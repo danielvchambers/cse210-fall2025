@@ -1,3 +1,5 @@
+using System.Text;
+
 public class Order
 {
     private List<Product> _products = new List<Product>();
@@ -13,17 +15,20 @@ public class Order
         return $"\n{_customer.GetName()}\n{_customer.GetAddress()}";
     }
 
-    public void PackingLabel()
+    public string PackingLabel()
     {
+        StringBuilder packingLabel = new StringBuilder();
         foreach (Product product in _products)
         {
-            Console.WriteLine(product.GetProduct());
+            packingLabel.Append(product.GetProduct());
         }
+
+        return packingLabel.ToString();
     }
 
-    public float CalcTotalCost()
+    public double CalcTotalCost()
     {
-        float totalCost = 0;
+        double totalCost = 0;
         foreach (Product product in _products)
         {
             totalCost = totalCost + product.CalcCost();
@@ -39,6 +44,12 @@ public class Order
             totalCost = totalCost + 35;
         }
 
-        return totalCost;
+        return Math.Round(totalCost, 2);
+    }
+
+    public void AddProduct(string name, int id, double price, int quantity)
+    {
+        Product product = new Product(name, id, price, quantity);
+        _products.Add(product);
     }
 }
