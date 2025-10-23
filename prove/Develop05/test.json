@@ -1,0 +1,30 @@
+{
+  "Total Points": "0",
+  "Simple Goals": [
+    {
+      "_goalName": "daniel",
+      "_goalInfo": "do stuff",
+      "_goalPoints": 1,
+      "_complete": false
+    }
+  ],
+  "Eternal Goals": [
+    {
+      "_goalName": "Mikayla",
+      "_goalInfo": "do more stuff forever",
+      "_goalPoints": 2,
+      "_complete": false
+    }
+  ],
+  "Checklist Goals": [
+    {
+      "_eventsOccured": 0,
+      "_totalEvents": 5,
+      "_pointsPerComplete": 4,
+      "_goalName": "Jarom",
+      "_goalInfo": "do stuff a number of times",
+      "_goalPoints": 10,
+      "_complete": false
+    }
+  ]
+}

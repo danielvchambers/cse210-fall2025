@@ -64,5 +64,4 @@ public class ChecklistGoal : Goal
             _complete = false;
         }
     }
-
 }
