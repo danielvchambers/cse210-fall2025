@@ -2,13 +2,20 @@ public class OutdoorGathering : Event
 {
     private string _weather;
 
-    public OutdoorGathering(string title, string description, DateTime date, DateTime time, Address address, string weather) : base(title, description, date, time, address)
+    public OutdoorGathering(string title, string description, DateTime dateTime, Address address, string weather) : base(title, description, dateTime, address)
     {
         _weather = weather;
     }
 
-    public string Display()
+    public override string Display()
     {
-        return "";
+        return $"Title: {_title}\nDescription: {_description}\nDate: {_dateTime.ToShortDateString()}\n" +
+        $"Time: {_dateTime.ToShortTimeString()}\nAddress: {_address.GetAddress()}\n" +
+        $"Weather: {_weather}\n";
+    }
+
+    public override string ShortDisplay()
+    {
+        return $"Type: Outdoor Gathering\nTitle: {_title}\nDate: {_dateTime.ToShortDateString()}\n";
     }
 }

@@ -1,14 +1,21 @@
-public class Reseption : Event
+public class Reception : Event
 {
-    private List<string> _registry = new List<string>();
+    private string _email;
 
-    public Reseption(string title, string description, DateTime date, DateTime time, Address address, List<string> registry) : base(title, description, date, time, address)
+    public Reception(string title, string description, DateTime dateTime, Address address, string email) : base(title, description, dateTime, address)
     {
-        _registry = registry;
+        _email = email;
     }
 
-    public string Email()
+    public override string ShortDisplay()
     {
-        return "";
+        return $"Type: Reception\nTitle: {_title}\nDate: {_dateTime.ToShortDateString()}\n";
+    }
+
+    public override string Display()
+    {
+        return $"Title: {_title}\nDescription: {_description}\nDate: {_dateTime.ToShortDateString()}\n" +
+        $"Time: {_dateTime.ToShortTimeString()}\nAddress: {_address.GetAddress()}\n" +
+        $"Email for RSVP before the Scheduled Day: {_email}\n";
     }
 }
