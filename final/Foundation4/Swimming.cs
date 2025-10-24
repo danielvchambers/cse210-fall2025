@@ -1,29 +1,32 @@
 public class Swimming : Activity
 {
-    private int _laps;
+    private double _laps;
 
-    public Swimming(double length, int laps) : base(length)
+    public Swimming(double length, string date, double laps) : base(length, date)
     {
         _laps = laps;
     }
 
     public override double CalcDistance()
     {
-        throw new NotImplementedException();
+        return Math.Round((_laps * 50) / 1000, 2);
     }
 
     public override double CalcPace()
     {
-        throw new NotImplementedException();
+        return Math.Round(_length / this.CalcDistance(), 2);
     }
 
     public override double CalcSpeed()
     {
-        throw new NotImplementedException();
+        return Math.Round((this.CalcDistance() / _length) * 60, 2);
     }
 
     public override string Display()
     {
-        throw new NotImplementedException();
+        return $"{_date} Swimming ({_length} min): " +
+        $"Distance {this.CalcDistance()} km, " +
+        $"Speed: {this.CalcSpeed()} kph, " +
+        $"Pace: {this.CalcPace()} min per km";
     }
 }

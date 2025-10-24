@@ -1,11 +1,12 @@
 public abstract class Activity
 {
-    protected DateOnly _date = new DateOnly();
+    protected string _date;
     protected double _length;
 
-    public Activity(double length)
+    public Activity(double length, string date)
     {
         _length = length;
+        _date = date;
     }
 
     public abstract double CalcDistance();

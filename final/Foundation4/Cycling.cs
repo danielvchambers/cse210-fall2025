@@ -2,28 +2,31 @@ public class Cycling : Activity
 {
     private double _speed;
 
-    public Cycling(double length, double speed) : base(length)
+    public Cycling(double length, string date, double speed) : base(length, date)
     {
         _speed = speed;
     }
 
     public override double CalcDistance()
     {
-        throw new NotImplementedException();
+        return Math.Round(_speed * (_length / 60), 2);
     }
 
     public override double CalcPace()
     {
-        throw new NotImplementedException();
+        return Math.Round(_length / this.CalcDistance(), 2);
     }
 
     public override double CalcSpeed()
     {
-        throw new NotImplementedException();
+        return Math.Round(_speed, 2);
     }
 
     public override string Display()
     {
-        throw new NotImplementedException();
+        return $"{_date} Cycling ({_length} min): " +
+        $"Distance {this.CalcDistance()} km, " +
+        $"Speed: {this.CalcSpeed()} kph, " +
+        $"Pace: {this.CalcPace()} min per km";
     }
 }
